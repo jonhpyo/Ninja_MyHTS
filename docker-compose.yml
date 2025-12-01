@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: hts_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: hts_admin
+      POSTGRES_PASSWORD: hts_pass
+      POSTGRES_DB: hts_real_db         # 여기서 DB 이름 지정
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db_data:/var/lib/postgresql/data
+      - ./init_sql:/docker-entrypoint-initdb.d
