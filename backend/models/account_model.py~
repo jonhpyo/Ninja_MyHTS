@@ -1,0 +1,11 @@
+
+from sqlalchemy import Column, Integer, Float, String
+from backend.db.database import Base
+
+class Account(Base):
+    __tablename__ = "accounts"
+
+    account_id = Column(Integer, primary_key=True, index=True)
+    balance = Column(Float, default=0.0)
+    margin = Column(Float, default=0.0)
+    pnl = Column(Float, default=0.0)

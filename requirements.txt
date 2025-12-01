@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+pydantic
+sqlalchemy
+psycopg2-binary
+aiohttp
+websockets
+python-dotenv
+PyQt6
+requests
+asyncio
