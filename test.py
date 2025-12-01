@@ -1,9 +1,8 @@
-from backend.services.market.market_service import MarketService
+from backend.services.market.market_service import market_service
 import time
 
-m = MarketService()
-m.add_symbol("BTCUSDT")
-m.start()
+market_service.add_symbol("BTCUSDT")
+market_service.start()
 
 time.sleep(3)
-print(m.get_price("BTCUSDT"))
+print(market_service.get_price("BTCUSDT"))

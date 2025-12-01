@@ -6,21 +6,25 @@ from backend.api.executions_api import router as executions_router
 from backend.api.symbols_api import router as symbols_router
 from backend.api.market_api import router as market_router
 from backend.api.market_ws_api import router as market_ws_router
+
 from backend.services.market.market_service import market_service
 
 app = FastAPI(title="HTS Trading Backend")
 
-# -----------------------------
-# Market WS (실시간 가격) 시작
-# -----------------------------
 
-market_service.add_symbol("BTCUSDT")
-market_service.add_symbol("ETHUSDT")
-market_service.add_symbol("SOLUSDT")
-market_service.add_symbol("XRPUSDT")
-market_service.add_symbol("BNBUSDT")
+@app.on_event("startup")
+def startup_event():
+    print("🔥 MarketService Startup 시작")
 
-market_service.start()
+    market_service.add_symbol("BTCUSDT")
+    market_service.add_symbol("ETHUSDT")
+    market_service.add_symbol("SOLUSDT")
+    market_service.add_symbol("XRPUSDT")
+    market_service.add_symbol("BNBUSDT")
+
+    market_service.start()
+    print("🔥 MarketService Startup 완료")
+
 
 # -----------------------------
 # API 등록
