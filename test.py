@@ -1,8 +1,6 @@
-from backend.services.market.market_service import market_service
-import time
+import bcrypt
 
-market_service.add_symbol("BTCUSDT")
-market_service.start()
-
-time.sleep(3)
-print(market_service.get_price("BTCUSDT"))
+raw = "admin"
+db_hash = "$2b$12$kEa9Vg9PDB28ymb4dNLAdeUoMa9gHIFfzSstIo3dEyGZlR3fMgjCW"
+print(raw.encode())
+print(bcrypt.checkpw(raw.encode(), db_hash.encode()))

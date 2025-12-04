@@ -5,11 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc4ef0b0-0a61-4aa1-a466-0a98435f6527" name="변경" comment=".">
+      <change afterPath="$PROJECT_DIR$/backend/api/auth_api.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/config/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/config/colors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/config/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/repositories/user_repo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/security.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/services/auth_service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/MyHTS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MyHTS.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/market/market_stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/market/market_stream.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/repositories/account_repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/repositories/account_repo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/repositories/base_repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/repositories/base_repo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/repositories/position_repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/repositories/position_repo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/position_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/position_service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/base/1/1247" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/1/1247" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/base/1/1247_vm" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/1/1247_vm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/base/1/1249" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/1/1249" afterDir="false" />
@@ -121,7 +131,6 @@
       <change beforePath="$PROJECT_DIR$/db_data/base/1/3764_vm" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/1/3764_vm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/base/1/3766" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/1/3766" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/base/1/3767" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/1/3767" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/1/pg_internal.init" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/base/16384/112" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/16384/112" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/base/16384/113" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/16384/113" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/base/16384/1247" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/16384/1247" afterDir="false" />
@@ -152,57 +161,6 @@
       <change beforePath="$PROJECT_DIR$/db_data/base/16384/13472_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/16384/13472_fsm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/base/16384/13472_vm" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/16384/13472_vm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/base/16384/13476" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/16384/13476" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16571" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16572" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16576" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16577" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16578" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16580" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16582" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16583" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16584" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16588" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16590" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16592" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16593" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16594" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16598" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16605" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16606" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16609" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16616" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16617" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16621" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16622" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16623" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16630" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16631" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16632" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16636" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16638" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16650" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16651" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16652" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16656" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16668" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16669" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16670" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16674" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16681" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16682" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16683" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16687" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16699" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16700" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16701" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16705" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16706" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16707" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16714" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16715" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16716" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16720" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/16737" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/base/16384/174" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/16384/174" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/base/16384/175" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/16384/175" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/base/16384/2187" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/16384/2187" afterDir="false" />
@@ -260,7 +218,6 @@
       <change beforePath="$PROJECT_DIR$/db_data/base/16384/2619_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/16384/2619_fsm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/base/16384/2619_vm" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/16384/2619_vm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/base/16384/2620" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/16384/2620" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/2620_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/16384/2620_fsm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/base/16384/2650" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/16384/2650" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/base/16384/2651" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/16384/2651" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/base/16384/2652" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/16384/2652" afterDir="false" />
@@ -643,7 +600,6 @@
       <change beforePath="$PROJECT_DIR$/db_data/base/5/3764_vm" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/5/3764_vm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/base/5/3766" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/5/3766" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/base/5/3767" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/5/3767" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/5/pg_internal.init" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/global/1213_vm" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/global/1213_vm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/global/1260" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/global/1260" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/global/1260_vm" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/global/1260_vm" afterDir="false" />
@@ -678,18 +634,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;jonhpyo&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/jonhpyo/Ninja_MyHTS.git&quot;,
-    &quot;accountId&quot;: &quot;3bd86b64-9f4d-4d2b-b1c6-b88cea06a703&quot;
-  }
-}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -698,38 +642,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.bootstrap_myhts.executor&quot;: &quot;Run&quot;,
-    &quot;Python.generate_backend_structure.executor&quot;: &quot;Run&quot;,
-    &quot;Python.generate_hts_structures.executor&quot;: &quot;Run&quot;,
-    &quot;Python.reset_db.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/DEV_HOME/Nija_Project/MyHTS/backend/api&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.bootstrap_myhts.executor": "Run",
+    "Python.generate_backend_structure.executor": "Run",
+    "Python.generate_hts_structures.executor": "Run",
+    "Python.reset_db.executor": "Run",
+    "Python.test.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/DEV_HOME/Nija_Project/MyHTS",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\DEV_HOME\Nija_Project\MyHTS" />
       <recent name="C:\DEV_HOME\Nija_Project\MyHTS\backend\api" />
       <recent name="C:\DEV_HOME\Nija_Project\MyHTS\backend\core" />
       <recent name="C:\DEV_HOME\Nija_Project\MyHTS\backend\db" />
       <recent name="C:\DEV_HOME\Nija_Project\MyHTS\backend\repositories" />
-      <recent name="C:\DEV_HOME\Nija_Project\MyHTS\backend\schemas" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\DEV_HOME\Nija_Project\MyHTS\backend" />
       <recent name="C:\DEV_HOME\Nija_Project\MyHTS" />
     </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-f69e5c277ee4-cbfc7b97e6b2-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-252.27397.106" />
+        <option value="bundled-python-sdk-4e2b1448bda8-9a97661f3031-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.27397.106" />
       </set>
     </attachedChunks>
   </component>

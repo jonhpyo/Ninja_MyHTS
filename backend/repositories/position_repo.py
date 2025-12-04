@@ -4,7 +4,8 @@ from sqlalchemy.orm import Session
 
 
 class PositionRepository(BaseRepository):
-    model = Position
+    def __init__(self):
+        super().__init__(Position)
 
     def get_by_account(self, db, account_id: int):
         return db.query(self.model).filter(self.model.account_id == account_id).all()
@@ -25,3 +26,5 @@ class PositionRepository(BaseRepository):
         db.commit()
         db.refresh(position)
         return position
+
+position_repo = PositionRepository()

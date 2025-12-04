@@ -6,7 +6,7 @@ from backend.api.executions_api import router as executions_router
 from backend.api.symbols_api import router as symbols_router
 from backend.api.market_api import router as market_router
 from backend.api.market_ws_api import router as market_ws_router
-
+from backend.api.auth_api import router as auth_router
 from backend.services.market.market_service import market_service
 
 app = FastAPI(title="HTS Trading Backend")
@@ -29,6 +29,7 @@ def startup_event():
 # -----------------------------
 # API 등록
 # -----------------------------
+app.include_router(auth_router)
 app.include_router(orders_router)
 app.include_router(accounts_router)
 app.include_router(positions_router)

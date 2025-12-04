@@ -33,3 +33,14 @@ class AccountRepository:
         db.commit()
         db.refresh(account)
         return account
+
+    def get_primary_account(self, db: Session, user_id: int) -> Account | None:
+        # 일단 user_id 기준 첫 계좌를 primary로 사용
+        return (
+            db.query(Account)
+            .filter(Account.user_id == user_id)
+            .order_by(Account.account_id.asc())
+            .first()
+        )
+
+account_repo = AccountRepository()

@@ -4,21 +4,14 @@ from backend.repositories.position_repo import PositionRepository
 from backend.models.account_model import Account
 from backend.models.symbol_model import Symbol
 from backend.models.position_model import Position
-
+from backend.repositories.position_repo import position_repo
 
 class PositionService:
     """
     선물 포지션 로직 담당 서비스
-
-    - 계좌 + 심볼별 포지션 1개 유지
-    - 신규 진입
-    - 같은 방향 추가 진입
-    - 반대 방향 청산 / 반전
-    - 실현손익(realized_pnl) 누적
     """
-
     def __init__(self):
-        self.position_repo = PositionRepository()
+        self.position_repo = position_repo
 
     def handle_trade(
         self,
