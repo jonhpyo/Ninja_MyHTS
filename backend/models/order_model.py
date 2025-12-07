@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, Numeric, TIMESTAMP, ForeignKey
 from backend.db.database import Base
+from sqlalchemy.orm import relationship
 
 
 class Order(Base):
@@ -19,3 +20,6 @@ class Order(Base):
     status = Column(String(20), default="FILLED")
     created_at = Column(TIMESTAMP)
     updated_at = Column(TIMESTAMP)
+
+# 🔥 여기가 핵심!
+    symbol = relationship("Symbol")

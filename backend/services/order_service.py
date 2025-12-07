@@ -53,16 +53,16 @@ class OrderService:
 
         self.order_repo.update_exec_price(db, order, exec_price)
 
-        execution = self.exec_repo.create(
-            db=db,
-            order_id=order.order_id,
-            account_id=account.account_id,
-            symbol_id=symbol.symbol_id,
-            side=side,
-            price=exec_price,
-            qty=qty,
-            fee=0.0
-        )
+        # execution = self.exec_repo.create(
+        #     db=db,
+        #     order_id=order.order_id,
+        #     account_id=account.account_id,
+        #     symbol_id=symbol.symbol_id,
+        #     side=side,
+        #     price=exec_price,
+        #     qty=qty,
+        #     fee=0.0
+        # )
 
         position = position_service.handle_trade(
             db=db,
@@ -86,6 +86,67 @@ class OrderService:
             "exec_price": float(exec_price),
             "position_qty": float(position.qty),
         }
+
+    def place_limit_order(
+            self,
+            db: Session,
+            account_id: int,
+            symbol_code: str,
+            side: str,
+            qty: float,
+            price: float
+    ):
+        """지정가 주문 생성 → 오더북에 쌓이고 체결되지 않음"""
+
+        account = self.account_repo.get(db, account_id)
+        if not account:
+            raise Exception("계좌 없음")
+
+        symbol = self.symbol_repo.get_by_code(db, symbol_code)
+        if not symbol:
+            raise Exception("심볼 없음")
+
+        # order 생성 (status = OPEN)
+        order = self.order_repo.create_limit(
+            db=db,
+            account_id=account_id,
+            symbol_id=symbol.symbol_id,
+            side=side,
+            qty=qty,
+            price=price
+        )
+
+        return {
+            "ok": True,
+            "order_id": order.order_id,
+            "request_price": float(order.request_price),
+            "status": order.status
+        }
+
+    # ------------------------------
+    # OPEN LIMIT ORDERS 조회
+    # ------------------------------
+    # backend/services/order_service.py
+    def get_open_orders(self, db: Session, account_id: int):
+        orders = self.order_repo.get_open_orders(db, account_id)
+
+        return [
+            {
+                "order_id": o.order_id,
+                "symbol": o.symbol.symbol_code,  # ← join 후 정상 동작
+                "side": o.side,
+                "price": float(o.request_price or 0),
+                "qty": float(o.qty),
+                "status": o.status,
+                "created_at": o.created_at.isoformat() if o.created_at else "",
+            }
+            for o in orders
+        ]
+
+    def cancel_orders(self, db: Session, order_ids: []):
+        return self.order_repo.cancel_orders(db, order_ids)
+
+
 
 
 order_service = OrderService()

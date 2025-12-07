@@ -6,6 +6,7 @@ from backend.api.executions_api import router as executions_router
 from backend.api.symbols_api import router as symbols_router
 from backend.api.market_api import router as market_router
 from backend.api.market_ws_api import router as market_ws_router
+from backend.api.orderbook_api import router as orderbook_router
 from backend.api.auth_api import router as auth_router
 from backend.services.market.market_service import market_service
 
@@ -37,3 +38,4 @@ app.include_router(executions_router)
 app.include_router(symbols_router)
 app.include_router(market_router)
 app.include_router(market_ws_router)
+app.include_router(orderbook_router)

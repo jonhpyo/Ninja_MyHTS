@@ -15,5 +15,15 @@ class OrderResponse(BaseModel):
     exec_price: float
     status: str
 
-    class Config:
-        orm_mode = True
+class LimitOrderRequest(BaseModel):
+    account_id: int
+    symbol: str
+    side: str     # BUY or SELL
+    qty: float
+    price: float  # 지정가
+
+class OpenOrdersRequest(BaseModel):
+    account_id: int
+
+class Config:
+    orm_mode = True
