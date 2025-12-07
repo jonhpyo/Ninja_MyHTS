@@ -94,4 +94,29 @@ class AccountService:
 
         return updated_account
 
+    def calc_liquidation_price(self, position, account, symbol):
+        qty = float(position.qty or 0)
+        if qty == 0:
+            return None
+
+        entry = float(position.entry_price)
+        balance = float(account.balance)
+        upnl = float(account.pnl_unrealized)
+        margin_used = float(account.margin_used)
+        multiplier = float(symbol.multiplier)
+
+        # 유지증거금(예시): 초기증거금의 50%
+        maintenance_margin = float(symbol.initial_margin) * abs(qty) * 0.5
+
+        equity = balance + upnl
+        margin_buffer = equity - maintenance_margin
+
+        if qty > 0:  # LONG
+            liq = entry - (margin_buffer / (qty * multiplier))
+        else:  # SHORT
+            liq = entry + (margin_buffer / (abs(qty) * multiplier))
+
+        return round(liq, 2)
+
+
 account_service = AccountService()

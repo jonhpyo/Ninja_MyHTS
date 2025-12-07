@@ -13,8 +13,18 @@ class MarketService:
         self.loop = None
         self.thread = None
 
+        self._symbols = []
+
     def add_symbol(self, symbol: str):
+        if symbol not in self._symbols:
+            self._symbols.append(symbol)
+
         self.stream.add_symbol(symbol)
+
+    @property
+    def symbols(self):
+        """MatchingEngine 이 접근할 심볼 리스트"""
+        return self._symbols
 
     def start(self):
         """

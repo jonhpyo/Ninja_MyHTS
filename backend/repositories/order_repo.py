@@ -88,3 +88,47 @@ class OrderRepository:
 
         db.commit()
         return [o.order_id for o in cancelled]
+
+    # backend/repositories/order_repo.py
+
+    def get_all_open_limit_orders(self, db: Session):
+        return db.query(Order).filter(
+            Order.status == "OPEN",
+            Order.order_type == "LIMIT"
+        ).all()
+
+    # ----------------------------------------------------------
+    # 🔥 (NEW) 심볼 기준 OPEN 주문 조회 → MatchingEngine에서 사용
+    # ----------------------------------------------------------
+    def get_open_orders_by_symbol(self, db: Session, symbol):
+        # symbol이 문자열(symbol_code)인 경우 ID로 변환
+        from backend.repositories.symbol_repo import SymbolRepository
+        symbol_repo = SymbolRepository()
+
+        if isinstance(symbol, str):  # "BTCUSDT"
+            symbol_obj = symbol_repo.get_by_code(db, symbol)
+            if not symbol_obj:
+                return []
+            symbol = symbol_obj.symbol_id  # 정수로 변환
+
+        return (
+            db.query(Order)
+            .filter(
+                Order.symbol_id == symbol,
+                Order.status == "OPEN"
+            )
+            .order_by(Order.created_at.asc())
+            .all()
+        )
+
+    # ----------------------------------------------------------
+    # 🔥 (NEW) 주문을 FILLED 로 변경
+    # ----------------------------------------------------------
+    def mark_filled(self, db, order):
+        order.status = "FILLED"
+        order.exec_price = order.exec_price or 0  # 또는 이미 처리된 값 사용
+        order.filled_qty = order.qty  # 전체 체결
+        db.commit()
+        db.refresh(order)
+        return order
+

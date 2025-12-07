@@ -146,7 +146,46 @@ class OrderService:
     def cancel_orders(self, db: Session, order_ids: []):
         return self.order_repo.cancel_orders(db, order_ids)
 
+    def execute_limit_order(self, db, order, exec_price):
+        """LIMIT 주문 자동 체결 처리"""
 
+        account = self.account_repo.get(db, order.account_id)
+        symbol = order.symbol  # relationship
+
+        # executions 생성
+        execution = self.exec_repo.create(
+            db=db,
+            order_id=order.order_id,
+            account_id=order.account_id,
+            symbol_id=order.symbol_id,
+            side=order.side,
+            price=exec_price,
+            qty=order.qty,
+            fee=0.0
+        )
+
+        # position 업데이트
+        position = position_service.handle_trade(
+            db=db,
+            account=account,
+            symbol=symbol,
+            side=order.side,
+            qty=order.qty,
+            exec_price=exec_price
+        )
+
+        # 계좌 업데이트
+        account_service.update_after_trade(
+            db=db,
+            account=account,
+            position=position,
+            symbol=symbol
+        )
+
+        # 주문 상태 = FILLED
+        self.order_repo.mark_filled(db, order)
+
+        return execution
 
 
 order_service = OrderService()

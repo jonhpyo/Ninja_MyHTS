@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, Numeric, TIMESTAMP, ForeignKey, UniqueConstraint
+from sqlalchemy.orm import relationship
 from backend.db.database import Base
 
 
@@ -12,10 +13,12 @@ class Position(Base):
     qty = Column(Numeric(20, 4), default=0)
     entry_price = Column(Numeric(20, 8))
     realized_pnl = Column(Numeric(20, 4), default=0)
-
     updated_at = Column(TIMESTAMP)
 
-    # UNIQUE(account_id, symbol_id)
+    # ⭐ 추가해야 하는 부분
+    symbol = relationship("Symbol", lazy="joined")
+    account = relationship("Account", lazy="joined")
+
     __table_args__ = (
         UniqueConstraint("account_id", "symbol_id"),
     )
