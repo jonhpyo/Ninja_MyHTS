@@ -10,36 +10,41 @@ class MarketStream:
 
     def __init__(self, market_cache):
         self.market_cache = market_cache
-        self.symbol_streams = []
+        self.symbols = []
         self.ws = None
         self.is_running = False
 
     def add_symbol(self, symbol: str):
-        stream_name = f"{symbol.lower()}@bookTicker"
-        self.symbol_streams.append(stream_name)
+        s = symbol.lower()
+        if s not in self.symbols:
+            self.symbols.append(s)
 
     async def connect(self):
-        """Binance WebSocket 연결 및 메시지 수신"""
 
-        if not self.symbol_streams:
+        if not self.symbols:
             print("⚠️ 등록된 심볼 없음")
             return
 
-        streams = "/".join(self.symbol_streams)
+        # 🔥 ticker + bookTicker 동시 수신 (last 가격 포함)
+        stream_list = []
+        for s in self.symbols:
+            stream_list.append(f"{s}@bookTicker")
+            stream_list.append(f"{s}@ticker")
+            stream_list.append(f"{s}@depth20@100ms")
+
+        streams = "/".join(stream_list)
         url = f"{BINANCE_WS_URL}/stream?streams={streams}"
 
-        print(f"📡 Binance Connect → {url}")
+        print("📡 Binance Connect →", url)
 
-        # ❗ SSL 보안 검증 끄기
         ssl_context = ssl._create_unverified_context()
-
         self.is_running = True
 
         while self.is_running:
             try:
                 async with websockets.connect(
                     url,
-                    ssl=ssl_context,   # ★ 여기가 핵심 해결점 ★
+                    ssl=ssl_context,
                     ping_interval=20,
                     ping_timeout=20
                 ) as ws:
@@ -51,24 +56,34 @@ class MarketStream:
                         self.handle_message(msg)
 
             except Exception as e:
-                print(f"🚨 Binance WS 오류: {e}")
-                print("⏳ 3초 후 재접속")
+                print("🚨 Binance WS 오류:", e)
                 await asyncio.sleep(3)
 
     def handle_message(self, msg):
-        """bookTicker 메시지를 캐시에 반영"""
         try:
             data = json.loads(msg)
+
             if "data" not in data:
                 return
 
-            t = data["data"]
-            symbol = t["s"]
-            bid = float(t["b"])
-            ask = float(t["a"])
-            last = (bid + ask) / 2
+            d = data["data"]
 
-            self.market_cache.update(symbol, bid, ask, last)
+            # depth5 메시지에는 symbol이 없으므로 stream 이름에서 symbol 추출
+            stream = data.get("stream", "")
+            symbol = stream.split("@")[0].upper()  # ex: btcusdt@depth5 → BTCUSDT
+
+            bids = d.get("bids", [])
+            asks = d.get("asks", [])
+
+            if not bids or not asks:
+                return
+
+            best_bid = float(bids[0][0])
+            best_ask = float(asks[0][0])
+            last = (best_bid + best_ask) / 2
+
+            self.market_cache.update(symbol, best_bid, best_ask, last)
 
         except Exception as e:
-            print("⚠️ message 처리 오류:", e)
+            print("⚠️ WS message 처리 오류:", e)
+

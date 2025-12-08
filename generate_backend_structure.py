@@ -34,8 +34,8 @@ files = {
     BASE / "services" / "risk_service.py": "",
 
     # Market (추가)
-    BASE / "services" / "market" / "market_cache.py": "",
-    BASE / "services" / "market" / "market_stream.py": "",
+    BASE / "services" / "market" / "market_cache.py.20251208": "",
+    BASE / "services" / "market" / "market_stream.py.20251208": "",
     BASE / "services" / "market" / "market_service.py": "",
 
     # Repositories

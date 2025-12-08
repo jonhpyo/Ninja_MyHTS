@@ -43,4 +43,11 @@ class MarketService:
     def get_price(self, symbol: str):
         return self.cache.get(symbol)
 
+    def get_all_symbols(self):
+        return self.cache.get_all_symbols()
+
+    def get_cache(self, symbol: str):
+        """심볼의 캐시된 시세 반환"""
+        return self.cache.get(symbol)
+
 market_service = MarketService()

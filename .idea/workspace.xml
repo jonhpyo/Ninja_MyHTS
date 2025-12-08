@@ -5,30 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc4ef0b0-0a61-4aa1-a466-0a98435f6527" name="변경" comment=".">
-      <change afterPath="$PROJECT_DIR$/backend/api/account_ws_api.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/api/execution_ws_api.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/matching/matching_engine.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/notifier/execution_notifier.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/ws_broadcast.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/utils/num.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/api/orderbook_api.py.20251208" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/services/market/market_cache.py.20251208" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/services/market/market_stream.py.20251208" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/api/orderbook_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/orderbook_api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/position_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/position_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/repositories/order_repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/repositories/order_repo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/repositories/position_repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/repositories/position_repo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/account_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/account_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/market/market_cache.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/market/market_cache.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/services/market/market_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/market/market_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/order_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/order_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/position_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/position_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/market/market_stream.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/market/market_stream.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/base/16384/1259" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/16384/1259" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/base/16384/2619" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/16384/2619" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/2619_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/16384/2619_fsm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_data/base/16384/2696" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/base/16384/2696" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/global/pg_control" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/pg_wal/000000010000000000000001" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/pg_wal/000000010000000000000001" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db_data/pg_xact/0000" beforeDir="false" afterPath="$PROJECT_DIR$/db_data/pg_xact/0000" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generate_backend_structure.py" beforeDir="false" afterPath="$PROJECT_DIR$/generate_backend_structure.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +115,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765067076055</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary=".">
+      <option name="closed" value="true" />
+      <created>1765118322643</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1765118322644</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
