@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Numeric, TIMESTAMP, ForeignKey
+from sqlalchemy import Column, Integer, String, Numeric, TIMESTAMP, ForeignKey, DateTime, func
 from backend.db.database import Base
 from sqlalchemy.orm import relationship
 
@@ -18,8 +18,8 @@ class Order(Base):
     exec_price = Column(Numeric(20, 8))
 
     status = Column(String(20), default="FILLED")
-    created_at = Column(TIMESTAMP)
-    updated_at = Column(TIMESTAMP)
+    created_at = Column(DateTime, server_default=func.now())
+    updated_at = Column(DateTime, server_default=func.now())
 
 # 🔥 여기가 핵심!
     symbol = relationship("Symbol")
