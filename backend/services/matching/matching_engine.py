@@ -2,8 +2,10 @@
 
 import traceback
 import asyncio
+import time
 
 from backend.db.database import SessionLocal
+from backend.api.trades_ws_api import broadcast_trade
 
 from backend.repositories.order_repo import OrderRepository
 from backend.repositories.execution_repo import ExecutionRepository
@@ -123,6 +125,31 @@ class MatchingEngine:
             account=account,
             position=position,
             symbol=symbol,
+        )
+
+        # _process_fill 안, broadcast_trade 직전
+        print(
+            "[MATCH → TRADE]",
+            symbol.symbol_code,
+            exec_price,
+            qty,
+            order.side
+        )
+
+        # =================================================
+        # 🔥 1️⃣ Time & Sales 브로드캐스트 (NEW)
+        # =================================================
+        trade_data = {
+            "type": "trade",  # ❗ 프론트 필터용
+            "symbol": symbol.symbol_code,  # BTCUSDT
+            "price": exec_price,
+            "qty": qty,
+            "side": order.side.upper(),  # BUY / SELL
+            "ts": time.time(),  # timestamp
+        }
+
+        asyncio.create_task(
+            broadcast_trade(trade_data)
         )
 
         # -----------------------------------------

@@ -14,6 +14,7 @@ from backend.api.orderbook_api import router as orderbook_router
 from backend.api.auth_api import router as auth_router
 from backend.api.execution_ws_api import router as execution_ws_router
 from backend.api.account_ws_api import router as account_ws_router
+from backend.api.trades_ws_api import router as trades_ws_router
 
 from backend.db.database import SessionLocal
 
@@ -57,6 +58,7 @@ def register_routers(app: FastAPI):
     app.include_router(orderbook_router)
     app.include_router(execution_ws_router)
     app.include_router(account_ws_router)
+    app.include_router(trades_ws_router)
 
 
 def register_startup_events(app: FastAPI):

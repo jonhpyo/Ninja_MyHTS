@@ -1,6 +1,6 @@
 import bcrypt
 
-raw = "admin"
-db_hash = "$2b$12$kEa9Vg9PDB28ymb4dNLAdeUoMa9gHIFfzSstIo3dEyGZlR3fMgjCW"
-print(raw.encode())
-print(bcrypt.checkpw(raw.encode(), db_hash.encode()))
+password = "1234".encode("utf-8")
+hashed = bcrypt.hashpw(password, bcrypt.gensalt())  # cost=12 기본
+
+print(hashed.decode("utf-8"))

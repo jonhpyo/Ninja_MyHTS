@@ -26,44 +26,55 @@ def get_merged_orderbook_v3(symbol_code: str, account_id: int, db: Session = Dep
     bin_bids = [(float(p), float(q)) for p, q in depth.get("bids", [])]
     bin_asks = [(float(p), float(q)) for p, q in depth.get("asks", [])]
 
-    # 2) DB 전체 ORDER 집계
+    # 2) DB ORDER 집계
     orders = db.query(Order).filter(
         Order.symbol.has(symbol_code=symbol_code),
         Order.order_type == "LIMIT",
         Order.status == "OPEN"
     ).all()
 
-    db_all = defaultdict(float)
-    db_my = defaultdict(float)
+    db_all_qty = defaultdict(float)
+    db_all_count = defaultdict(int)
+
+    db_my_qty = defaultdict(float)
+    db_my_count = defaultdict(int)
 
     for o in orders:
         price = float(o.request_price)
         qty = float(o.qty)
 
-        db_all[price] += qty
+        # 전체 주문 집계
+        db_all_qty[price] += qty
+        db_all_count[price] += 1
 
+        # 내 주문 집계
         if o.account_id == account_id:
-            db_my[price] += qty
+            db_my_qty[price] += qty
+            db_my_count[price] += 1
 
-    def merge_side(bin_side, is_bid=True):
+    # 3) Binance + DB Merge
+    def merge_side(bin_side):
         merged = []
         for price, bin_qty in bin_side:
-            all_qty = db_all.get(price, 0.0)
-            my_qty = db_my.get(price, 0.0)
-
             merged.append({
                 "price": price,
                 "binance_qty": bin_qty,
-                "db_all_qty": all_qty,
-                "db_my_qty": my_qty
-            })
 
+                # 전체
+                "db_all_qty": db_all_qty.get(price, 0.0),
+                "db_all_count": db_all_count.get(price, 0),
+
+                # 내 주문
+                "db_my_qty": db_my_qty.get(price, 0.0),
+                "db_my_count": db_my_count.get(price, 0)
+            })
         return merged
 
     return {
-        "bids": merge_side(bin_bids, True),
-        "asks": merge_side(bin_asks, False)
+        "bids": merge_side(bin_bids),
+        "asks": merge_side(bin_asks)
     }
+
 
 
 @router.get("/{symbol_code}")
